@@ -1,0 +1,6 @@
+<p>blog works!</p>
+<div *ngFor="let post of posts" [ngStyle]="{'display': 'flex'}">
+  <span>{{post.id}}</span>
+  <span>{{post.title}}</span>
+  <span>{{post.body}}</span>
+</div>

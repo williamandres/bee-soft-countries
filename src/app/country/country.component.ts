@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryService } from '../country-service';
 import { ICountry } from '../interafaces';
+import { CountryService } from '../services';
 
 @Component({
   selector: 'app-country',
