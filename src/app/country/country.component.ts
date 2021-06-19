@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CountryService } from '../country-service';
+import { ICountry } from '../interafaces';
 
 @Component({
   selector: 'app-country',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
+  public countries: ICountry[] = []
 
-  constructor() { }
+  constructor(private readonly _countriesService: CountryService) { }
 
   ngOnInit(): void {
+    // this.countries = this._countriesService.getCountries();
+    this._countriesService.getCountries().subscribe(data => {
+      if (data) {
+        this.countries = data.slice(0, 20)
+      }
+    });
   }
-
 }
