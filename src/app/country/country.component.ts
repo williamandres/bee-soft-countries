@@ -8,6 +8,12 @@ import { CountryService } from '../services';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
+
+  newCountry = { //form
+    name: "",
+    capital: "" 
+  }
+
   public countries: ICountry[] = []
 
   constructor(private readonly _countriesService: CountryService) { }
@@ -16,8 +22,16 @@ export class CountryComponent implements OnInit {
     // this.countries = this._countriesService.getCountries();
     this._countriesService.getCountries().subscribe(data => {
       if (data) {
-        this.countries = data.slice(0, 20)
+        this.countries = data.slice(0, 22)
+        
       }
     });
+  }
+
+  public saveCountry(): void{
+    this.newCountry.capital = this.newCountry.capital + 'City'
+    this.countries.push(this.newCountry  )
+    
+    
   }
 }

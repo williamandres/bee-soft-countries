@@ -1,5 +1,19 @@
 <p>country works!</p>
 
+<form #countryForm="ngForm"  ngSubmit="saveCountry()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" aria-describedby="nameCountry" [(ngModel)] = 'newCountry.name' name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="capital">Capital</label>
+    <input type="text" class="form-control" id="capital" [(ngModel)] = 'newCountry.capital' name="capital">
+  </div>
+  
+  <button type="submit" class="btn btn-primary" (click)='saveCountry()'>Submit</button>
+</form>
+
 <ul>
   <li *ngFor="let country of countries">{{ country.name }}</li>
 </ul>
