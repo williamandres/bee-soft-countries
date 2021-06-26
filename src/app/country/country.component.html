@@ -3,15 +3,17 @@
 <form #countryForm="ngForm"  ngSubmit="saveCountry()">
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" aria-describedby="nameCountry" [(ngModel)] = 'newCountry.name' name="name">
+    <input type="text" class="form-control " id="name" aria-describedby="nameCountry" [(ngModel)]='newCountry.name' name="name" required #name='ngModel'>
+    <div [hidden]="name.valid || name.pristine"   class="alert alert-danger"> Name is required</div>
   </div>
 
   <div class="form-group">
     <label for="capital">Capital</label>
-    <input type="text" class="form-control" id="capital" [(ngModel)] = 'newCountry.capital' name="capital">
+    <input type="text" class="form-control" id="capital" [(ngModel)]='newCountry.capital' name="capital" required #capital = 'ngModel'>
+    <div [hidden]="capital.valid|| capital.pristine"   class="alert alert-danger"> Capital city is required</div>
   </div>
   
-  <button type="submit" class="btn btn-primary" (click)='saveCountry()'>Submit</button>
+  <button type="submit" class="btn btn-primary" (click)='saveCountry()' [disabled]= 'countryForm.form.invalid' >Submit</button>
 </form>
 
 <ul>

@@ -10,8 +10,8 @@ import { CountryService } from '../services';
 export class CountryComponent implements OnInit {
 
   newCountry = { //form
-    name: "",
-    capital: "" 
+    name: "Nombre del país",
+    capital: " Nombre de la Ciudad" 
   }
 
   public countries: ICountry[] = []
@@ -20,18 +20,18 @@ export class CountryComponent implements OnInit {
 
   ngOnInit(): void {
     // this.countries = this._countriesService.getCountries();
+    
     this._countriesService.getCountries().subscribe(data => {
       if (data) {
-        this.countries = data.slice(0, 22)
-        
+        this.countries = data.slice(0, 22);
+        this.newCountry.name= "Ecuador";
+        this.newCountry.capital= "Quito"
       }
     });
   }
 
-  public saveCountry(): void{
-    this.newCountry.capital = this.newCountry.capital + 'City'
-    this.countries.push(this.newCountry  )
-    
-    
+  public saveCountry():void{
+    this.newCountry.capital = this.newCountry.capital+' City'
+    this.countries.push(this.newCountry)
   }
 }
